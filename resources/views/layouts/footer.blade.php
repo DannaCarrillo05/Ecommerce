@@ -1,0 +1,1 @@
+<p>© 2023 Mi Tienda. Todos los derechos reservados.</p>

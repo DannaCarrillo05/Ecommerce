@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Formulario de Productos</title>
+@section('css')
     <style>
         body {
             background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
@@ -134,37 +129,45 @@
             box-shadow: 0 4px 16px #26c6da;
         }
     </style>
+@endsection
+
+@section('content')
+
+    <body>
+        <h1>FORMULARIO DE PRODUCTOS</h1>
+        <form action="" method="POST" enctype="multipart/form-data">
+            <div>
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+            <div>
+                <label for="descripcion">Descripción:</label>
+                <textarea id="descripcion" name="descripcion" required></textarea>
+            </div>
+            <div>
+                <label for="precio">Precio:</label>
+                <input type="number" id="precio" name="precio" step="0.01" required>
+            </div>
+            <div>
+                <label for="imagen">Imagen:</label>
+                <input type="file" id="imagen" name="imagen" accept="image/*">
+            </div>
+            <button type="submit">Guardar</button>
+        </form>
+    </body>
+@endsection
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Formulario de Productos</title>
+
 </head>
 
-<body>
-    <div class="barra-superior">
-        <span class="logo">Ecommerce</span>
-        <nav>
-            <a href="#" class="nav-link">Inicio</a>
-            <a href="#" class="nav-link">Productos</a>
-            <a href="#" class="nav-link">Contacto</a>
-        </nav>
-    </div>
-    <h1>FORMULARIO DE PRODUCTOS</h1>
-    <form action="" method="POST" enctype="multipart/form-data">
-        <div>
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" required>
-        </div>
-        <div>
-            <label for="descripcion">Descripción:</label>
-            <textarea id="descripcion" name="descripcion" required></textarea>
-        </div>
-        <div>
-            <label for="precio">Precio:</label>
-            <input type="number" id="precio" name="precio" step="0.01" required>
-        </div>
-        <div>
-            <label for="imagen">Imagen:</label>
-            <input type="file" id="imagen" name="imagen" accept="image/*">
-        </div>
-        <button type="submit">Guardar</button>
-    </form>
-</body>
+
 
 </html>

@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalle del Producto</title>
+@section('css')
     <style>
         body {
             background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
@@ -116,25 +112,31 @@
             box-shadow: 0 4px 16px #26c6da;
         }
     </style>
+@endsection
+
+@section('content')
+
+    <body>
+        <div class="producto-detalle">
+            <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80"
+                alt="Nombre del Producto">
+            <div class="producto-nombre">Nombre del Producto</div>
+            <div class="producto-precio">$150.00</div>
+            <div class="producto-descripcion">Esta es la descripción del producto. Aquí puedes agregar detalles,
+                características y cualquier información relevante sobre el producto.</div>
+        </div>
+    </body>
+@endsection
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Producto</title>
+
 </head>
 
-<body>
-    <div class="barra-superior">
-        <span class="logo">Ecommerce</span>
-        <nav>
-            <a href="#" class="nav-link">Inicio</a>
-            <a href="#" class="nav-link">Productos</a>
-            <a href="#" class="nav-link">Contacto</a>
-        </nav>
-    </div>
-    <div class="producto-detalle">
-        <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80"
-            alt="Nombre del Producto">
-        <div class="producto-nombre">Nombre del Producto</div>
-        <div class="producto-precio">$150.00</div>
-        <div class="producto-descripcion">Esta es la descripción del producto. Aquí puedes agregar detalles,
-            características y cualquier información relevante sobre el producto.</div>
-    </div>
-</body>
 
 </html>
