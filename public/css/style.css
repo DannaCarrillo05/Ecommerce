@@ -20,6 +20,18 @@ body {
 	flex: 1 0 auto;
 }
 
+/* Make #app a flex column so main-content (inside #app) can grow and push footer down */
+#app {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+/* Fallback to ensure footer stays at bottom when possible */
+.site-footer {
+	margin-top: auto;
+}
+
 .barra-superior {
 	width: 100%;
 	background: linear-gradient(90deg, #26c6da 60%, #1976d2 100%);
@@ -44,6 +56,9 @@ body {
 
 nav {
 	margin-right: 32px;
+	display: flex;
+	align-items: center;
+	gap: 16px;
 }
 
 .nav-link {
@@ -329,5 +344,74 @@ button[type="submit"]:hover {
 		margin-left: 6px;
 		margin-right: 6px;
 	}
+}
+
+/* Auth pages: center the login/register forms */
+.auth-center {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 40px 16px;
+	/* leave space for header/footer; this value is conservative */
+	min-height: calc(100vh - 220px);
+}
+
+.auth-center .card {
+	width: 100%;
+	max-width: 520px;
+}
+
+/* Remove default gray card background from Bootstrap on auth pages and style a clean panel */
+.auth-center .card {
+	background: transparent; /* remove gray */
+	border: none;
+	box-shadow: none;
+}
+
+.auth-center .card-header {
+	background: transparent;
+	border-bottom: none;
+	color: #1976d2;
+	font-weight: 600;
+	font-size: 1.05rem;
+	padding: 12px 16px;
+}
+
+.auth-center .card-body {
+	background: linear-gradient(135deg, #fff 70%, #e9fbff 100%);
+	padding: 28px 28px;
+	border-radius: 12px;
+	border: 2px solid rgba(34, 198, 213, 0.18);
+	box-shadow: 0 8px 30px rgba(44, 62, 80, 0.06);
+}
+
+/* Ensure the auth form is horizontally centered regardless of Bootstrap grid */
+.auth-center .container {
+	display: flex;
+	justify-content: center;
+}
+
+.auth-center .row {
+	width: 100%;
+	justify-content: center;
+}
+
+.auth-center .col-md-8 {
+	display: flex;
+	justify-content: center;
+}
+
+.auth-center label {
+	color: #1976d2;
+	font-weight: 600;
+}
+
+.auth-center .btn-primary {
+	background: linear-gradient(90deg, #26c6da 60%, #1976d2 100%);
+	border: none;
+}
+
+.auth-center .btn-primary:hover {
+	background: linear-gradient(90deg, #1976d2 60%, #26c6da 100%);
 }
 
