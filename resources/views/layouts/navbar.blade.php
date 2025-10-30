@@ -18,6 +18,8 @@
             <a href="#" class="nav-link">Contacto</a>
         @endunless
 
+        <a class="nav-link" href="{{ route('admin.index') }}">{{ _('Admin') }}</a>
+
         {{-- Authentication links (always visible) --}}
         @guest
             @if (Route::has('login'))
