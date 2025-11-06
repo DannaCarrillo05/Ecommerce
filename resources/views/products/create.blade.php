@@ -8,22 +8,35 @@
             <form action="{{ route('admin.products.store') }}" method="POST">
                 @csrf
 
+                @error('name')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
                 <div class="input-group input-group-outline mb-3">
                     <label for="name"></label>
                     <input type="text" class="form-control" id="name" name="name" placeholder="Nombre del producto"
-                        required>
+                        value="{{ old('name') }}">
                 </div>
 
+                @error('description')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
                 <div class="input-group input-group-outline mb-3">
                     <label for="description"></label>
-                    <textarea class="form-control" id="description" name="description" placeholder="Descripción" required></textarea>
+                    <input class="form-control" id="description" name="description" placeholder="Descripción"
+                        value="{{ old('description') }}">
                 </div>
+                @error('price')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
 
                 <div class="input-group input-group-outline mb-3">
                     <label for="price"></label>
                     <input type="number" class="form-control" id="price" name="price" step="0.01"
-                        placeholder="Precio" required>
+                        placeholder="Precio" value="{{ old('price') }}">
                 </div>
+                @error('category')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
 
                 <div class="input-group input-group-outline mb-3">
                     <select id="productCategory" class="form-control" name ="category">
@@ -33,6 +46,9 @@
                         @endforeach
                     </select>
                 </div>
+                @error('brand')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
 
                 <div class="input-group input-group-outline mb-3">
                     <select id="productBrand" class="form-control" name="brand">
