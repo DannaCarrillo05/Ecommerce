@@ -48,4 +48,13 @@ class ProductController extends Controller
         $product->save();
         return "Se guardó el producto correctamente.";
     }
+
+    function table()
+    {
+        $products = Product::all();
+        return view('products.table', [
+            'products' => $products
+        ]);
+    }
+
 }
