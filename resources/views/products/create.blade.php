@@ -5,40 +5,40 @@
     <div class="card">
         <div class="card-body">
 
-            <form action="" method="POST" enctype="multipart/form-data">
-
+            <form action="{{ route('admin.products.store') }}" method="POST">
+                @csrf
 
                 <div class="input-group input-group-outline mb-3">
-                    <label for="nombre"></label>
-                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre del producto"
+                    <label for="name"></label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Nombre del producto"
                         required>
                 </div>
 
                 <div class="input-group input-group-outline mb-3">
-                    <label for="descripcion"></label>
-                    <textarea class="form-control" id="descripcion" name="descripcion" placeholder="Descripción" required></textarea>
+                    <label for="description"></label>
+                    <textarea class="form-control" id="description" name="description" placeholder="Descripción" required></textarea>
                 </div>
 
                 <div class="input-group input-group-outline mb-3">
-                    <label for="precio"></label>
-                    <input type="number" class="form-control" id="precio" name="precio" step="0.01"
+                    <label for="price"></label>
+                    <input type="number" class="form-control" id="price" name="price" step="0.01"
                         placeholder="Precio" required>
                 </div>
 
                 <div class="input-group input-group-outline mb-3">
-                    <select id="productCategory" class="form-control">
+                    <select id="productCategory" class="form-control" name ="category">
                         <option value="" selected disabled>-- Seleccione una categoría --</option>
-                        @foreach($categories as $item)
-                            <option value="{{ $item->id }}">{{$item->name}}</option>
+                        @foreach ($categories as $item)
+                            <option value="{{ $item->id }}">{{ $item->name }}</option>
                         @endforeach
                     </select>
                 </div>
 
                 <div class="input-group input-group-outline mb-3">
-                    <select id="productBrand" class="form-control">
+                    <select id="productBrand" class="form-control" name="brand">
                         <option value="" selected disabled>-- Seleccione una marca --</option>
-                        @foreach($brands as $item)
-                            <option value="{{ $item->id }}">{{$item->name}}</option>
+                        @foreach ($brands as $item)
+                            <option value="{{ $item->id }}">{{ $item->name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -48,7 +48,7 @@
                     <input type="file" class="form-control" id="imagen" name="imagen" accept="image/*">
                 </div>
 
-                
+
 
                 <input type="submit" class="btn bg-gradient-success" value="Guardar Producto">
             </form>
