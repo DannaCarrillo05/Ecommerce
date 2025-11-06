@@ -24,6 +24,6 @@ class BrandSeeder extends Seeder
         $myBrand3->name = 'Adidas';
         $myBrand3->save();
 
-        Brand::factory(100)->create();
+        Brand::factory(20)->create();
     }
 }

@@ -8,11 +8,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[ProductController::class,'index']);
 
-Route::prefix('products')->controller(ProductController::class)->group(function () {
-    Route::get('/', 'index');
-    Route::get('/create', 'create');
-    Route::get('/{id}/{category?}', 'show');
-});
+Route::get('products/{id}/{category?}', [ProductController::class, 'show']);
 
 Auth::routes();
 
@@ -24,7 +20,7 @@ Route::prefix('admin')->group(
         Route::get('/',[AdminController::class,'index'])->name('admin.index');
         Route::get('/category/create',[CategoryController::class,'create'])->name('admin.category.create');
         Route::post('/category/store',[CategoryController::class,'store'])->name('admin.category.store');
+        
+        Route::get('products/create',[ProductController::class, 'create'] );
     }
-
-
 );

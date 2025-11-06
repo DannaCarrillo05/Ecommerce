@@ -11,8 +11,20 @@ class CategoryFactory extends Factory
 {
     public function definition(): array
     {
+        $category = [
+            'Electronics',
+            'Clothing',
+            'Books',
+            'Home & Kitchen',
+            'Sports & Outdoors',
+            'Health & Beauty',
+            'Toys & Games',
+            'Automotive',
+            'Garden & Outdoors',
+            'Office Supplies',
+        ];
         return [
-            'name' => fake()->name(),
+            'name' => $this->faker->randomElement($category),
         ];
     }
 }
