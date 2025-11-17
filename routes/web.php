@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
@@ -25,5 +26,9 @@ Route::prefix('admin')->group(
         Route::post('products/store',[ProductController::class, 'store'])->name('admin.products.store');
 
         Route::get('/products',[ProductController::class,'table'])->name('admin.products.table');
+        
+        Route::get('/brand/create',[BrandController::class,'create'])->name('admin.brand.create');
+        Route::post('/brand/store',[BrandController::class,'store'])->name('admin.brand.store');
+        Route::get('/brand',[BrandController::class,'table'])->name('admin.brand.table');
     }
 );

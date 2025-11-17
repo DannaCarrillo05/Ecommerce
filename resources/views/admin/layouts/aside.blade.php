@@ -28,19 +28,20 @@
                      <span class="nav-link-text ms-1">Products</span>
                  </a>
              </li>
-             <li class="nav-item">
-                 <a class="nav-link {{ Request::is('admin/category/create') ? 'active bg-gradient-dark text-white' : 'text-dark' }}"
-                     href="{{ route('admin.category.create') }}">
-                     <i class="material-symbols-rounded opacity-5">receipt_long</i>
-                     <span class="nav-link-text ms-1">Categories</span>
-                 </a>
-             </li>
-             <li class="nav-item">
-                 <a class="nav-link text-dark" href="../pages/virtual-reality.html">
-                     <i class="material-symbols-rounded opacity-5">view_in_ar</i>
-                     <span class="nav-link-text ms-1">Brands</span>
-                 </a>
-             </li>
+            <li class="nav-item">
+                <a class="nav-link {{ Request::is('admin/category*') ? 'active bg-gradient-dark text-white' : 'text-dark' }}"
+                    href="{{ route('admin.category.table') }}">
+                    <i class="material-symbols-rounded opacity-5">receipt_long</i>
+                    <span class="nav-link-text ms-1">Categories</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{ Request::is('admin/brand*') ? 'active bg-gradient-dark text-white' : 'text-dark' }}"
+                    href="{{ route('admin.brand.table') }}">
+                    <i class="material-symbols-rounded opacity-5">view_in_ar</i>
+                    <span class="nav-link-text ms-1">Brands</span>
+                </a>
+            </li>
          </ul>
      </div>
      <div class="sidenav-footer position-absolute w-100 bottom-0">
