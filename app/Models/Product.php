@@ -14,4 +14,14 @@ class Product extends Model
     protected $table = 'products';
     protected $fillable = ['name', 'description', 'price', 'category_id', 'brand_id'];
     public $timestamps = true;
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
+
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class, 'brand_id');
+    }
 }

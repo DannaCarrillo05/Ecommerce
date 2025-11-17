@@ -9,9 +9,32 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    function index()
+    function index(Request $request)
     {
-        return view('products.index');
+        $query = Product::with(['category', 'brand']);
+        
+        // Filtro por categoría
+        if ($request->has('category') && $request->category != '') {
+            $query->where('category_id', $request->category);
+        }
+        
+        // Filtro por marca
+        if ($request->has('brand') && $request->brand != '') {
+            $query->where('brand_id', $request->brand);
+        }
+        
+        $products = $query->orderBy('id', 'desc')->paginate(12)->appends($request->query());
+        
+        $categories = Category::orderBy('name', 'asc')->get();
+        $brands = Brand::orderBy('name', 'asc')->get();
+        
+        return view('products.index', [
+            'products' => $products,
+            'categories' => $categories,
+            'brands' => $brands,
+            'selectedCategory' => $request->category,
+            'selectedBrand' => $request->brand
+        ]);
     }
 
     function create()
