@@ -46,6 +46,12 @@
     <div class="card">
         <div class="card-body">
             <h1>LISTA DE MARCAS</h1>
+            @if (session('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
             <a href="{{ route('admin.brand.create') }}" class="btn btn-primary">Crear Marca</a>
             <table class="table">
                 <thead>
@@ -65,7 +71,11 @@
                             <td class="text-center">{{ $brand->created_at }}</td>
                             <td class="text-center">{{ $brand->updated_at }}</td>
                             <td class="text-center">
-                                <a style="margin-right: 10px;" href="#" class="btn btn-info btn-sm">Eliminar</a>
+                                <form action="{{ route('admin.brand.destroy', $brand->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('¿Estás seguro de que deseas eliminar esta marca?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach

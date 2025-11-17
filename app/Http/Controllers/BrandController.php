@@ -27,5 +27,12 @@ class BrandController extends Controller
             'brands' => $brands
         ]);
     }
+
+    public function destroy($id)
+    {
+        $brand = Brand::findOrFail($id);
+        $brand->delete();
+        return redirect()->route('admin.brand.table')->with('success', 'Marca eliminada correctamente.');
+    }
 }
 

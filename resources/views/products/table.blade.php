@@ -46,6 +46,12 @@
     <div class="card">
         <div class="card-body">
             <h1>LISTA DE PRODUCTOS</h1>
+            @if (session('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
             <a href="{{ route('admin.products.create') }}" class="btn btn-primary">Crear Producto</a>
             <table class="table">
                 <thead>
@@ -78,8 +84,12 @@
                             <td class = "text-center">{{ $product->created_at }}</td>
                             <td class = "text-center">{{ $product->updated_at }}</td>
                             <td class = "text-center">
-                                <a style="margin-right: 10px;" href="#" class="btn btn-info btn-sm">Eliminar</a>
-
+                                <form action="{{ route('admin.products.destroy', $product->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este producto?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

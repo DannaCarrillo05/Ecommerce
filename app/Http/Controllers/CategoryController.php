@@ -28,4 +28,11 @@ class CategoryController extends Controller
             'categories' => $categories
         ]);
     }
+
+    public function destroy($id)
+    {
+        $category = Category::findOrFail($id);
+        $category->delete();
+        return redirect()->route('admin.category.table')->with('success', 'Categoría eliminada correctamente.');
+    }
 }

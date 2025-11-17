@@ -46,6 +46,12 @@
     <div class="card">
         <div class="card-body">
             <h1>LISTA DE CATEGORÍAS</h1>
+            @if (session('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
             <a href="{{ route('admin.category.create') }}" class="btn btn-primary">Crear Categoría</a>
             <table class="table">
                 <thead>
@@ -65,7 +71,11 @@
                             <td class="text-center">{{ $category->created_at }}</td>
                             <td class="text-center">{{ $category->updated_at }}</td>
                             <td class="text-center">
-                                <a style="margin-right: 10px;" href="#" class="btn btn-info btn-sm">Eliminar</a>
+                                <form action="{{ route('admin.category.destroy', $category->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('¿Estás seguro de que deseas eliminar esta categoría?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach
