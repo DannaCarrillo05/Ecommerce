@@ -18,6 +18,14 @@ class CategoryController extends Controller
         Category::create([
             'name' => $request->get('name')
         ]);
-        return "Se ha creado la categoría correctamente.";
+        return redirect()->route('admin.category.table');
+    }
+
+    public function table()
+    {
+        $categories = Category::orderBy('id', 'desc')->paginate(10);
+        return view('admin.category.table', [
+            'categories' => $categories
+        ]);
     }
 }

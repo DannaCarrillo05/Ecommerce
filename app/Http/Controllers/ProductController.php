@@ -35,7 +35,7 @@ class ProductController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string',
-            'price' => 'required|numeric|min:0',
+            'price' => 'required|numeric|min:0|max:1000000',
             'category' => 'required|exists:category,id',
             'brand' => 'required|exists:brand,id',
         ]);
@@ -46,12 +46,12 @@ class ProductController extends Controller
         $product->category_id = $request->input('category');
         $product->brand_id = $request->input('brand');
         $product->save();
-        return "Se guardó el producto correctamente.";
+        return redirect()->route('admin.products.table');
     }
 
     function table()
     {
-        $products = Product::all();
+        $products = Product::orderBy('id', 'desc')->paginate(10);
         return view('products.table', [
             'products' => $products
         ]);

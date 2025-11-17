@@ -13,17 +13,17 @@ Route::get('products/{id}/{category?}', [ProductController::class, 'show']);
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/', [HomeController::class, 'welcome']);
 
 Route::prefix('admin')->group(
     function () {
         Route::get('/',[AdminController::class,'index'])->name('admin.index');
         Route::get('/category/create',[CategoryController::class,'create'])->name('admin.category.create');
         Route::post('/category/store',[CategoryController::class,'store'])->name('admin.category.store');
+        Route::get('/category',[CategoryController::class,'table'])->name('admin.category.table');
         
         Route::get('products/create',[ProductController::class, 'create'])->name('admin.products.create');
         Route::post('products/store',[ProductController::class, 'store'])->name('admin.products.store');
 
-        Route::get('/products',[ProductController::class,'table'])->name('admin.products.index');
+        Route::get('/products',[ProductController::class,'table'])->name('admin.products.table');
     }
 );
